@@ -1,0 +1,62 @@
+# Netlify specific
+netlify/
+netlify.toml
+*.toml
+
+# Edge functions
+**/*edge-functions*
+
+# Development files
+*.log
+*.tsbuildinfo
+.DS_Store
+.env*
+.vscode/
+.idea/
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+__tests__/
+coverage/
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Config files
+.eslintrc*
+.prettierrc*
+.gitignore
+.editorconfig
+tsconfig.json
+jest.config.*
+.vale*
+.markdownlint*
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+
+# Internal
+internal/
+scripts/
+
+# Development dependencies
+node_modules/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Source maps
+*.map
+
+# Lock files (optional)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

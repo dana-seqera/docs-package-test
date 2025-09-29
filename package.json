@@ -1,84 +1,71 @@
 {
-  "name": "seqera-docs-theme",
+  "name": "@seqera/docusaurus-theme",
   "version": "1.0.0",
-  "private": true,
+  "description": "Seqera's custom Docusaurus theme with components, styles, and configurations",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "src",
+    "static",
+    "css"
+  ],
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "dev": "npm run start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "format:staged": "prettier --write",
-    "lint:prose": "vale .",
-    "lint:prose:docs": "vale docs/ --ext=.md,.mdx",
-    "lint:prose:fix": "vale --output=line .",
-    "lint:all": "npm run format:check && npm run lint:prose",
-    "sanitize-existing": "node internal/sanitize-existing.mjs",
-    "markdownlint": "markdownlint-cli2 '**/*.{md,mdx}' --config .markdownlint-cli2.cjs"
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "prepare": "npm run build",
+    "clean": "rm -rf lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seqera/docusaurus-theme.git"
+  },
+  "keywords": [
+    "docusaurus",
+    "theme",
+    "seqera",
+    "documentation"
+  ],
+  "author": "Seqera",
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "@docusaurus/core": "^3.9.0",
+    "@docusaurus/preset-classic": "^3.9.0",
+    "@docusaurus/theme-common": "^3.9.0",
+    "@mdx-js/react": "^3.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "@docusaurus/core": "3.9.1",
-    "@docusaurus/faster": "^3.9.1",
-    "@docusaurus/preset-classic": "3.9.1",
-    "@mdx-js/react": "^3.0.0",
+    "@docusaurus/module-type-aliases": "^3.9.1",
+    "@docusaurus/plugin-content-docs": "^3.9.1",
+    "@docusaurus/tsconfig": "^3.9.1",
+    "@docusaurus/types": "^3.9.1",
+    "@tailwindcss/postcss": "^4.1.13",
+    "autoprefixer": "^10.4.21",
     "clsx": "^2.0.0",
     "docusaurus-plugin-openapi-docs": "^4.5.1",
     "docusaurus-remark-plugin-tab-blocks": "^3.1.0",
     "docusaurus-theme-openapi-docs": "^4.5.1",
-    "dotenv": "^17.2.2",
     "framer-motion": "^12.23.22",
-    "i": "^0.3.7",
-    "npm": "^11.6.1",
+    "postcss": "^8.5.6",
     "prism-react-renderer": "^2.3.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
     "rehype-katex": "^7.0.1",
     "remark-code-import": "^1.2.0",
     "remark-math": "^6.0.0",
-    "remark-yaml-to-table": "github:seqeralabs/remark-yaml-to-table"
+    "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.9.1",
-    "@docusaurus/tsconfig": "3.9.1",
-    "@docusaurus/types": "3.9.1",
-    "@tailwindcss/postcss": "^4.1.13",
-    "autoprefixer": "^10.4.21",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.1",
-    "markdownlint-cli2": "^0.18.1",
-    "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "raw-loader": "^4.0.2",
-    "tailwindcss": "^4.1.13",
     "typescript": "~5.6.2"
-  },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 3 chrome version",
-      "last 3 firefox version",
-      "last 5 safari version"
-    ]
   },
   "engines": {
     "node": ">=20.0"
   },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,json,css}": [
-      "prettier --write"
-    ]
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
