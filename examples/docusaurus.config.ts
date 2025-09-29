@@ -1,16 +1,14 @@
-// example/docusaurus.config.ts
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+const {themes: prismThemes} = require('prism-react-renderer');
 
-const config: Config = {
-  title: 'Seqera Theme Example',
-  tagline: 'Testing the @seqera/docusaurus-theme package',
+/** @type {import('@docusaurus/types').Config} */
+const config = {
+  title: 'Seqera Documentation',
+  tagline: 'Testing @seqera/docusaurus-theme with multiple doc instances',
   favicon: 'img/favicon.ico',
   url: 'https://localhost:3000',
   baseUrl: '/',
   organizationName: 'seqera',
-  projectName: 'theme-example',
+  projectName: 'docs-example',
   
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -20,18 +18,14 @@ const config: Config = {
     locales: ['en'],
   },
 
-  // Use the local theme package
+  // Use the theme package
   themes: [
     [
-      // In development: use the local package via npm link
-      // In production: use '@seqera/docusaurus-theme'
-      process.env.USE_LOCAL_THEME ? 
-        require.resolve('../src/index.ts') : 
-        '@seqera/docusaurus-theme',
+      '@seqera/docusaurus-theme',
       {
         enableTailwind: true,
-        enableOpenApiDocs: false, // Set to true if you want to test OpenAPI
-        customCss: './src/css/custom.css',
+        enableOpenApiDocs: false,
+        // customCss: require.resolve('./src/css/custom.css'),
       },
     ],
   ],
@@ -40,96 +34,87 @@ const config: Config = {
     [
       'classic',
       {
-        docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/seqera/docusaurus-theme/tree/main/example/',
-        },
-        blog: {
-          showReadingTime: true,
-        },
+        docs: false, // Disable default docs
+        blog: false,
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          // customCss: require.resolve('./src/css/custom.css'),
         },
-      } satisfies Preset.Options,
+      },
+    ],
+  ],
+
+  plugins: [
+    // Platform API documentation
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'platform-api',
+        path: 'platform-api/docs',
+        routeBasePath: 'platform-api',
+        sidebarPath: require.resolve('./platform-api/docs/sidebar/sidebar.js'),
+        editUrl: 'https://github.com/seqera/docs/edit/main/examples/',
+      },
+    ],
+    // Platform Enterprise documentation
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'platform-enterprise',
+        path: 'platform-enterprise',
+        routeBasePath: 'platform-enterprise',
+        sidebarPath: require.resolve('./platform-enterprise/enterprise-sidebar.json'),
+        editUrl: 'https://github.com/seqera/docs/edit/main/examples/',
+      },
     ],
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Theme Example',
-      logo: {
-        alt: 'Seqera Logo',
-        src: 'img/logo.svg',
-        srcDark: 'img/logo-dark.svg',
-      },
+      title: 'Seqera Docs',
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          to: '/platform-enterprise',
+          label: 'Platform Enterprise',
           position: 'left',
-          label: 'Documentation',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
-        {to: '/showcase', label: 'Components', position: 'left'},
         {
-          href: 'https://github.com/seqera/docusaurus-theme',
-          label: 'GitHub',
-          position: 'right',
+          to: '/platform-api',
+          label: 'Platform API',
+          position: 'left',
+        },
+        {
+          to: '/test',
+          label: 'Component Test',
+          position: 'left',
         },
       ],
     },
     footer: {
       style: 'dark',
-      logo: {
-        alt: 'Seqera',
-        src: 'img/seqera-icon.svg',
-        srcDark: 'img/seqera-icon-light.svg',
-        href: 'https://seqera.io',
-        width: 25,
-        height: 25,
-      },
       links: [
         {
-          title: 'Docs',
+          title: 'Documentation',
           items: [
             {
-              label: 'Getting Started',
-              to: '/docs/intro',
+              label: 'Platform Enterprise',
+              to: '/platform-enterprise',
             },
             {
-              label: 'Components',
-              to: '/showcase',
+              label: 'Platform API',
+              to: '/platform-api',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Resources',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Seqera',
+              href: 'https://seqera.io',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/seqera/docusaurus-theme',
+              label: 'Nextflow',
+              href: 'https://nextflow.io',
             },
           ],
         },
@@ -141,7 +126,7 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
       additionalLanguages: ['bash', 'docker', 'groovy', 'java', 'python', 'yaml'],
     },
-  } satisfies Preset.ThemeConfig,
+  },
 };
 
-export default config;
+module.exports = config;
