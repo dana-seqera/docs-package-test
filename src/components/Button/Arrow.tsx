@@ -1,5 +1,8 @@
 import React from "react";
-const SvgArrowinline = (props) => (
+
+interface ArrowProps extends React.SVGProps<SVGSVGElement> {}
+
+const SvgArrowinline: React.FC<ArrowProps> = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={6}
@@ -21,4 +24,5 @@ const SvgArrowinline = (props) => (
     </defs>
   </svg>
 );
+
 export default SvgArrowinline;

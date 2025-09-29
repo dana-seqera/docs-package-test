@@ -18,16 +18,16 @@ const config = {
     locales: ['en'],
   },
 
-  // Use the theme package
+  // Use the theme package - simple configuration
   themes: [
     [
       '@seqera/docusaurus-theme',
       {
         enableTailwind: true,
         enableOpenApiDocs: false,
-        // customCss: require.resolve('./src/css/custom.css'),
       },
     ],
+      'docusaurus-theme-openapi-docs',
   ],
 
   presets: [
@@ -37,7 +37,7 @@ const config = {
         docs: false, // Disable default docs
         blog: false,
         theme: {
-          // customCss: require.resolve('./src/css/custom.css'),
+          // customCss can go here if needed
         },
       },
     ],

@@ -1,0 +1,75 @@
+---
+title: Component Test
+description: Testing @seqera/docusaurus-theme components
+---
+
+import { Button, Card, Grid } from '@seqera/docusaurus-theme/lib/components';
+
+# Component Test Page
+
+This page tests the components from `@seqera/docusaurus-theme`.
+
+## Buttons
+
+<div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem'}}>
+  <Button brand>Brand Button</Button>
+  <Button brand arrow>With Arrow</Button>
+  <Button secondary>Secondary</Button>
+  <Button white>White Button</Button>
+  <Button blue>Blue Button</Button>
+  <Button small>Small</Button>
+  <Button large>Large</Button>
+</div>
+
+## Cards
+
+<Grid>
+  <Card 
+    to="/platform-enterprise" 
+    title="Platform Enterprise"
+    description="Enterprise documentation"
+  />
+  <Card 
+    to="/platform-api" 
+    title="Platform API"
+    description="API reference docs"
+  />
+  <Card 
+    href="https://seqera.io" 
+    title="Seqera Website"
+    description="Visit seqera.io"
+  />
+</Grid>
+
+## Grid with Multiple Cards
+
+<Grid>
+  <Card to="/docs" title="Card 1">
+    First card content
+  </Card>
+  <Card to="/docs" title="Card 2">
+    Second card content
+  </Card>
+  <Card to="/docs" title="Card 3">
+    Third card content
+  </Card>
+  <Card to="/docs" title="Card 4">
+    Fourth card content
+  </Card>
+  <Card to="/docs" title="Card 5">
+    Fifth card content
+  </Card>
+  <Card to="/docs" title="Card 6">
+    Sixth card content
+  </Card>
+</Grid>
+
+## Links
+
+<Button brand arrow href="/platform-enterprise">
+  Go to Platform Enterprise
+</Button>
+
+<Button secondary href="/platform-api" style={{marginLeft: '1rem'}}>
+  Go to Platform API
+</Button>
